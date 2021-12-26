@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Tests
+{% endblock %}
+
+
+{% block content %}
+    {% if tests %}
+        <table class="mx-auto table-bordered border-dark
+                      table-hover table-light align-middle mb-3"
+               style="text-align: center; border: 1px solid black;">
+            <thead class="table-info bordered border-dark align-middle">
+                <tr>
+                  <th scope="col" class="d-none d-md-block">Icon</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Level</th>
+                  <th scope="col">Info</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for test in tests.items %}
+                <tr>
+                    <td class="d-none d-md-block"><img class="img" src="{{ url_for('static', filename='tests/' + test.image) }}"></td>
+                    <td>{{ test.title }}</td>
+                    <td><i>{{ test.description }}</i></td>
+                    <td>{{ test.level.name }}</td>
+                    <td> <a class="btn btn-primary" href="{{ url_for('quiz.test_view_page', test_uuid=test.uuid) }}">DETAILS</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- PAGINATION -->
+        {% if tests.pages > 1 %}
+            <div class="text-center mb-2">
+            {% for page_num in tests.iter_pages(left_edge=1, right_edge=2, left_current=1, right_current=2) %}
+                {% if page_num %}
+                    {% if tests.page == page_num %}
+                        <a class="btn btn-dark mb-4" href="{{ url_for('quiz.tests_list_page', page=page_num) }}">{{ page_num }}</a>
+                    {% else %}
+                        <a class="btn btn-outline-dark mb-4" href="{{ url_for('quiz.tests_list_page', page=page_num) }}">{{ page_num }}</a>
+                    {% endif %}
+                {% else %}
+                    <div class="btn btn-secondary mb-4">&#8636;&#8641;</div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
+
+    {% else %}
+        <p>No tests found in the database</p>
+    {% endif %}
+{% endblock %}

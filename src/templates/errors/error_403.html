@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    ERR403
+{% endblock %}
+
+{% block content %}
+        <div class="container text-center">
+            <img src="{{ url_for('static', filename='err/403.png') }}" alt="err_403"
+                 class="mb-3 justify-content-sm-center" style="width: 200px; height: 140px;">
+            <h1>403. Not allowed</h1>
+            <p>Your credentials for this page are restricted.<br>
+                <a href="{{ url_for('main.home_page') }}">Click</a> to return to the main page.
+            </p>
+        </div>
+{% endblock %}

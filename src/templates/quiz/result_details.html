@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Result
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container row d-flex justify-content-center text-center">
+        <div class="align-self-center display-6 fw-bold">Congratulations!<br><i>{{ test.title }}</i></div>
+        <img class="align-self-center img-thumbnail rounded-circle m-4" style="width: 200px; height: 200px;"
+             src="{{ url_for('static', filename='tests/' + test.image) }}">
+    </div>
+    {% with score = result.num_correct_answers * 100 / test.get_num_questions() %}
+    <div class="fst-italic text-center fs-4 mb-3">
+        Your score: <b>{{ score }}%</b>
+    </div>
+    <div class="progress mb-3">
+        <div class="progress-bar bg-success" role="progressbar"
+             style="width: {{ score }}%"></div>
+        <div class="progress-bar bg-danger" role="progressbar"
+             style="width: {{100 - score }}%"></div>
+    </div>
+    {% endwith %}
+    <div class="fs-4 mb-4 text-center">
+            You have completed <i>&lt;&lt;{{ test.title }}&gt;&gt;</i> Python quiz<br>
+            with <b class="text-success"><i>{{ result.num_correct_answers }}</i> correct answers</b>
+            out of <b class="text-primary"><i>{{ test.get_num_questions() }}</i> questions</b>. Congratulations!
+    </div>
+    <div class="container col-lg-6 text-center fs-5 bg-info fst-italic pt-3 mb-4">
+            We hope you have enjoyed the quiz.<br>
+            You may leave feedback on the quiz below if you have any questions, objections, remarks or propositions.
+            <br><div class="mb-3"></div>
+            <a class="btn btn-lg btn-secondary mb-3" href="{{ url_for('posts.post_create_page') }}" role="button">LEAVE FEEDBACK</a>
+    </div>
+
+    <small class="row text-center">
+        <a class="text-primary h4" href="{{ url_for('quiz.tests_list_page') }}">
+            &lt;&lt; Return to the page with tests
+        </a>
+    </small>
+{% endblock %}

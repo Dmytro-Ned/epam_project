@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ operation }} post
+{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom border-2 w-25 border-dark border-warning mb-4">{{ operation }} post</legend>
+                <div class="mb-3">
+                    {{ form.title.label(class="form-control-label") }}
+                    {% if form.title.errors %}
+                        {{ form.title(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.title(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.test.label(class="form-control-label") }}
+                    {% if form.test.errors %}
+                        {{ form.test(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.test.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.test(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="mb-2">
+                    {{ form.content.label(class="form-control-label") }}
+                    {% if form.content.errors %}
+                        {{ form.content(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.content.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.content(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="inline m-3">
+                <div class="d-inline-block">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+                {% if operation == 'Update your' %}
+                     <a class="d-inline-block btn btn-secondary" href="{{ url_for('posts.post_list_view_page', post_id=post.id) }}">Back</a>
+                {% endif %}
+            </div>
+
+        </form>
+    </div>
+{% endblock %}
