@@ -17,6 +17,8 @@ class Config(object):
     # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'quiz.db') # TODO: remove
     SQLALCHEMY_TRACK_MODIFICATIONS = False  # Don't send a signal to the app every time a change is a made in the DB.
     #
+    BUNDLE_ERRORS = True  # RESTFullAPI ReqParse
+    #
     MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.googlemail.com'
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 587)
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') or True

@@ -1,3 +1,5 @@
+from string import punctuation
+#
 from flask_login import current_user
 from flask_wtf import FlaskForm, RecaptchaField
 from flask_wtf.file import FileField, FileAllowed
@@ -22,9 +24,13 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Sign Up')
 
     def validate_username(self, input_username):  # do not make @static
-        user = User.query.filter_by(username=input_username.data).first()
+        user = User.query.filter_by(username=input_username.data).first()  # TODO: CHECK ALL!
         if user:
             raise ValidationError("A user with such a username already exists. Input another one.")
+        for char in input_username.data:
+            forbidden_chars = punctuation + " "
+            if char in forbidden_chars:
+                raise ValidationError(f"Forbidden characters: {forbidden_chars}")
         if input_username.data.lower() in ['admin', 'administrator']:
             raise ValidationError("Forbidden username")
 
@@ -50,10 +56,14 @@ class ProfileForm(FlaskForm):
     submit = SubmitField('Update')
 
     def validate_username(self, input_username):  # do not make @static
-        if input_username.data != current_user.username:
+        if input_username.data != current_user.username:  # TODO: CHECK ALL!
             user = User.query.filter_by(username=input_username.data).first()
             if user:
                 raise ValidationError("A user with that username already exists. Input another one.")
+        for char in input_username.data:
+            forbidden_chars = punctuation + " "
+            if char in forbidden_chars:
+                raise ValidationError(f"Forbidden characters: {forbidden_chars}")
         if input_username.data.lower() in ['admin', 'administrator']:
             raise ValidationError("Forbidden username")
 

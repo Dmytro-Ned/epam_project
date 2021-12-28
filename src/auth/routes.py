@@ -1,7 +1,7 @@
 from flask import flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_user, login_required, logout_user
 #
-from src import db, mail
+from src import db
 from src.auth import bp
 from src.auth.forms import LoginForm, ProfileForm, RegistrationForm, ResetPasswordForm, RequestResetForm
 from src.auth.models import User
@@ -25,7 +25,7 @@ def register_page():
         login_user(user)
         return redirect(url_for("main.home_page"))
     elif request.method == "POST" and not request.form.get('g_recaptcha_response'):
-        flash("Check the Recaptcha box", category="primary")
+        flash("Don't forget to check the Recaptcha box", category="primary")
     return render_template("auth/register.html", form=form)
 
 
