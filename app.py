@@ -1,3 +1,7 @@
+"""
+Main manager file (WSGI) of the project.
+"""
+
 from src import db, instantiate_app
 from src.auth.models import User
 from src.posts.models import Post
@@ -9,9 +13,16 @@ app = instantiate_app()
 
 @app.shell_context_processor
 def make_shell_context():
+    """
+    Adds default identifiers to the "flask shell"
+    :return dict: pairs of identifiers and objects they relate to
+    """
     return {"db": db, "Option": Option, "Post": Post, "Result": Result,
             "Test": Test, "Question": Question, "User": User}
 
 
 if __name__ == "__main__":
+    """
+    The Entry Point of the project
+    """
     app.run(debug=True, port=2021)

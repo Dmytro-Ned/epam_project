@@ -6,7 +6,7 @@
 
 
 {% block content %}
-    {% if tests %}
+    {% if tests.items %}
         <table class="mx-auto table-bordered border-dark
                       table-hover table-light align-middle mb-3"
                style="text-align: center; border: 1px solid black;">
@@ -51,6 +51,6 @@
         {% endif %}
 
     {% else %}
-        <p>No tests found in the database</p>
+        <p class="container text-center h2 fw-bold pt-5">No tests found in the database</p>
     {% endif %}
 {% endblock %}

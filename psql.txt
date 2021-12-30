@@ -1,3 +1,0 @@
-user: server
-pass: servere
-db: flaskapp

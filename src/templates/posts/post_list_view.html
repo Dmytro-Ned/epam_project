@@ -7,7 +7,7 @@
 
 
 {% block content %}
-    {% if posts %}
+    {% if posts.items %}
         {% for post in posts.items %}
             <article class="container bg-light border border-3 border-secondary col-6 mb-3">
                 <h2 class="h4 mb-2 pt-3">{{ post.title }}</h2>

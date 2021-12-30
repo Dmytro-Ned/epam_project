@@ -1,3 +1,7 @@
+"""
+This module contains SQL ORM model for "User" instances.
+"""
+
 from uuid import uuid4
 #
 from flask import current_app
@@ -10,10 +14,23 @@ from src import bcrypt, db, login_manager
 
 @login_manager.user_loader   # must be implemented to use the 'flask_login' functions
 def load_user(user_id):
+    """
+    This function substitutes 4 typical methods
+    arising during login/logout procedures.
+
+    :param int user_id: primary key of a db User instance
+    :return User: and instance of User class by id
+    """
     return User.query.get(int(user_id))
 
 
 class User(db.Model, UserMixin):
+    """
+    An ORM class which represents SQL table "user".
+
+    Fields: id, uuid, first name, last name, username, email, image, hashed password,
+            superuser flag, related posts rel.,related test results rel.
+    """
     id = db.Column(db.Integer, primary_key=True)
     uuid = db.Column(UUID(as_uuid=True), default=uuid4, index=True, unique=True)  # PgSQL
     first_name = db.Column(db.String(20))
@@ -28,21 +45,52 @@ class User(db.Model, UserMixin):
 
     @property
     def full_name(self):
+        """
+        Returns user's fullname as a property.
+
+        :return str: full name of a user
+        """
         return f"{self.first_name} {self.last_name}"
 
     def encrypt_password(self, password):
+        """
+        Encrypts an input password via bcrypt coding.
+
+        :param str password: input non-hashed password
+        """
         self.password_hash = bcrypt.generate_password_hash(password=password).decode()
 
     def verify_password(self, password):
+        """
+        Verifies if an input access password corresponds
+        to an encrypted (hashed) password of the user.
+
+        :param str password: an input password sequence
+        :return bool: an indicator of correspondence
+        """
         return bcrypt.check_password_hash(self.password_hash, password)
 
     def get_reset_token(self, expires_sec=180):
+        """
+        Generates a unique token for password change access.
+
+        :param int expires_sec: time period during which token is valid
+        :return str: a decoded token
+        """
         serializer = Serializer(current_app.config['SECRET_KEY'],
                                 expires_sec)
         return serializer.dumps({'user_id': self.id}).decode('utf-8')
 
     @staticmethod
     def verify_reset_token(token):
+        """
+        Verifies a user before password change.
+        Returns a user if verification passes
+        and None in case it fails.
+
+        :param str token: unique token to verify a user
+        :return User/NoneType: a User instance by id/None
+        """
         serializer = Serializer(current_app.config['SECRET_KEY'])
         try:
             user_id = serializer.loads(token)['user_id']
@@ -51,4 +99,9 @@ class User(db.Model, UserMixin):
         return User.query.get(user_id)
 
     def __repr__(self):
+        """
+        Readable representation of an instance.
+
+        :return str: username and email of a user
+        """
         return f"User({self.username}, {self.email})"

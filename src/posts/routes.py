@@ -1,3 +1,9 @@
+"""
+The module renders backend view-functions' behavior
+of the BP-registered application "posts"
+during client-server interaction through HTML templates.
+"""
+
 from flask import abort, current_app, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 #
@@ -11,6 +17,11 @@ from src.posts.forms import PostForm
 @bp.route("/posts/create", methods=["GET", "POST"])
 @login_required
 def post_create_page():
+    """
+    The function manages post creation procedure.
+
+    :return str: an HTML template for home page/post page
+    """
     form = PostForm()
     form.test.choices = [test.title for test in Test.query.all()]
     if form.validate_on_submit():
@@ -29,6 +40,11 @@ def post_create_page():
 @bp.route("/posts", methods=["GET", "POST"])
 @login_required
 def post_list_view_page():
+    """
+    The function manages posts display procedure.
+
+    :return str: an HTML template for posts (list) page
+    """
     posts = Post.query.order_by(Post.post_date.desc()).paginate(
         per_page=current_app.config['POSTS_PER_PAGE']
     )
@@ -38,6 +54,12 @@ def post_list_view_page():
 @bp.route("/posts/<uuid:post_uuid>", methods=["GET", "POST"])
 @login_required
 def post_update_page(post_uuid):
+    """
+    The function manages post update procedure.
+
+    :param UUID post_uuid: the UUID of an instance of the "Post" ORM model
+    :return str: an HTML template for posts (list) page/post page
+    """
     post = Post.query.filter_by(uuid=post_uuid).first()
     if post.author != current_user:  # in case of attempt to change the post by another user
         abort(403)
@@ -61,6 +83,12 @@ def post_update_page(post_uuid):
 @bp.route("/posts/delete/<uuid:post_uuid>", methods=["POST"])  # no 'GET' template
 @login_required
 def post_delete(post_uuid):
+    """
+    The function manages post deletion procedure.
+
+    :param UUID post_uuid: the UUID of an instance of the "Post" ORM model
+    :return str: an HTML template for posts (list) page
+    """
     post = Post.query.filter_by(uuid=post_uuid).first()
     if post.author != current_user:  # in case of attempt to change the post by another user
         abort(403)

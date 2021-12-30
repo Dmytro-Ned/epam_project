@@ -1,4 +1,10 @@
-from flask import current_app, flash, redirect, render_template, request, url_for
+"""
+The module renders backend view-functions' behavior
+of the BP-registered application "quiz"
+during client-server interaction through HTML templates.
+"""
+
+from flask import current_app, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 #
 from src import db
@@ -10,6 +16,11 @@ from src.quiz.forms import OptionMultiForm
 @bp.route("/tests/")
 @login_required
 def tests_list_page():
+    """
+    The function manages tests display procedure.
+
+    :return str: an HTML template for tests (list) page
+    """
     tests = Test.query.order_by(Test.id).paginate(
         per_page=current_app.config['TABLES_PER_PAGE']
     )
@@ -19,6 +30,12 @@ def tests_list_page():
 @bp.route("/tests/<uuid:test_uuid>", methods=["GET", "POST"])
 @login_required
 def test_view_page(test_uuid):
+    """
+    The function manages the display of details about a test.
+
+    :param UUID test_uuid: the UUID of an instance of "Test" ORM model
+    :return str: an HTML template for test details page
+    """
     test = Test.query.filter_by(uuid=test_uuid).first()
     return render_template("quiz/test_details.html", test=test)
 
@@ -26,6 +43,12 @@ def test_view_page(test_uuid):
 @bp.route("/tests/<uuid:test_uuid>/results/", methods=["POST"])
 @login_required
 def result_create_view(test_uuid):
+    """
+    The function manages test result creation procedure.
+
+    :param UUID test_uuid: the UUID of an instance of "Test" ORM model
+    :return str: an HTML template for result update (test proceed) page
+    """
     result = Result(
         user_id=current_user.id,
         test_id=Test.query.filter_by(uuid=test_uuid).first().id,
@@ -42,6 +65,13 @@ def result_create_view(test_uuid):
 @bp.route("/tests/<uuid:test_uuid>/results/<uuid:result_uuid>/questions/", methods=["GET", "POST"])
 @login_required
 def result_update_question_view_page(test_uuid, result_uuid):
+    """
+    The function manages test proceeding (result update) procedure.
+
+    :param UUID test_uuid: the UUID of an instance of "Test" ORM model
+    :param UUID result_uuid: the UUID of an instance of "Result" ORM model
+    :return str: an HTML template for result update page/result view page
+    """
     result = Result.query.filter_by(uuid=result_uuid).first()
     last_question = result.last_question
     question = Question.query.filter_by(
@@ -73,6 +103,13 @@ def result_update_question_view_page(test_uuid, result_uuid):
 @bp.route("/tests/<uuid:test_uuid>/results/<uuid:result_uuid>/details")
 @login_required
 def result_view_page(test_uuid, result_uuid):
+    """
+    The function manages result display procedure.
+
+    :param UUID test_uuid: the UUID of an instance of "Test" ORM model
+    :param UUID result_uuid: the UUID of an instance of "Result" ORM model
+    :return str: an HTML template for result view page
+    """
     result = Result.query.filter_by(uuid=result_uuid).first()
     test = Test.query.filter_by(uuid=test_uuid).first()
     return render_template("quiz/result_details.html",

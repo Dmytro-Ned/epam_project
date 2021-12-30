@@ -1,3 +1,7 @@
+"""
+A module which creates a blueprint of 'auth' application.
+"""
+
 from flask import Blueprint
 
 bp = Blueprint('auth', __name__)
