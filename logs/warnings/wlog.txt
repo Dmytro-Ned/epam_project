@@ -1,4 +1,5 @@
-2021-12-28 20:13:35,523 ERROR: 
+
+2022-01-01 14:05:03,326 ERROR: 
 Exception on /auth/register [POST] [in /home/jagdpanther/EPAM/snaketests/venv/lib/python3.8/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
   File "/home/jagdpanther/EPAM/snaketests/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
@@ -24,7 +25,7 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/jagdpanther/EPAM/snaketests/venv/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/home/jagdpanther/EPAM/snaketests/src/auth/routes.py", line 23, in register_page
+  File "/home/jagdpanther/EPAM/snaketests/src/auth/routes.py", line 34, in register_page
     db.session.commit()
   File "<string>", line 2, in commit
   File "/home/jagdpanther/EPAM/snaketests/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1428, in commit
@@ -71,5 +72,5 @@ sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key v
 DETAIL:  Key (username)=(terminal) already exists.
 
 [SQL: INSERT INTO "user" (uuid, first_name, last_name, username, email, image, password_hash, is_superuser) VALUES (%(uuid)s, %(first_name)s, %(last_name)s, %(username)s, %(email)s, %(image)s, %(password_hash)s, %(is_superuser)s) RETURNING "user".id]
-[parameters: {'uuid': UUID('e2bd1f40-fb42-40de-b1b4-58e852181850'), 'first_name': '', 'last_name': '', 'username': 'terminal', 'email': 'sfhere@fhehr.cfwg', 'image': 'default.png', 'password_hash': '$2b$12$ffju125xvB/97KwP1KbSjexcVt0LmoZQ95nPB45IYMauMy8ae2ZTm', 'is_superuser': False}]
+[parameters: {'uuid': UUID('5e654226-4042-4cfa-ac67-32c39543b7da'), 'first_name': '', 'last_name': '', 'username': 'terminal', 'email': 'foo@bar.com', 'image': 'default.png', 'password_hash': '$2b$12$r1dzFK3HL1YbuIUCnFf6QuzjbY6n2/YevcxqmFYXAQzNSHNIKOoxu', 'is_superuser': False}]
 (Background on this error at: https://sqlalche.me/e/14/gkpj)

@@ -38,24 +38,24 @@ class RegistrationForm(FlaskForm):
     recaptcha = RecaptchaField()
     submit = SubmitField('Sign Up')
 
-    def validate_username(self, input_username):  # do not make @static
-        """
-        This method verifies that input username would not break SQL constraints,
-        is unique, does not contain forbidden characters and differs from
-        the administrator's username.
-        Raises ValidationErrors otherwise.
-
-        :param StringField input_username: a username input into the field
-        """
-        user = User.query.filter_by(username=input_username.data).first()
-        if user:
-            raise ValidationError("A user with such a username already exists. Input another one.")
-        for char in input_username.data:
-            forbidden_chars = punctuation + " "
-            if char in forbidden_chars:
-                raise ValidationError(f"Forbidden characters: {forbidden_chars}")
-        if input_username.data.lower() in ['admin', 'administrator']:
-            raise ValidationError("Forbidden username")
+    # def validate_username(self, input_username):  # do not make @static
+    #     """
+    #     This method verifies that input username would not break SQL constraints,
+    #     is unique, does not contain forbidden characters and differs from
+    #     the administrator's username.
+    #     Raises ValidationErrors otherwise.
+    #
+    #     :param StringField input_username: a username input into the field
+    #     """
+    #     user = User.query.filter_by(username=input_username.data).first()
+    #     if user:
+    #         raise ValidationError("A user with such a username already exists. Input another one.")
+    #     for char in input_username.data:
+    #         forbidden_chars = punctuation + " "
+    #         if char in forbidden_chars:
+    #             raise ValidationError(f"Forbidden characters: {forbidden_chars}")
+    #     if input_username.data.lower() in ['admin', 'administrator']:
+    #         raise ValidationError("Forbidden username")
 
     def validate_email(self, input_email):  # do not make @static
         """

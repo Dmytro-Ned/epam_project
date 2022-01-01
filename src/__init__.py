@@ -3,6 +3,7 @@ A module which creates and instantiates a Flask App.
 """
 
 import logging
+from logging import FileHandler
 from logging.handlers import RotatingFileHandler
 #
 from flask import Flask
@@ -82,18 +83,34 @@ def instantiate_app(config_class=Config):  # application factory
     app.register_blueprint(quiz_bp, name="quiz")
     # - #
     # LOGGING #
-    if not app.testing or app.debug:
-        file_handler = RotatingFileHandler(Config.LOGS_DIR,
-                                           maxBytes=10240,
-                                           mode='a+',
-                                           backupCount=100)
-        file_handler.setFormatter(logging.Formatter(
-            '%(asctime)s %(levelname)s: \n'
-            '%(message)s '
-            '[in %(pathname)s:%(lineno)d]\n'))
-        file_handler.setLevel(logging.WARNING)
+    if not (app.testing or app.debug):
+        formatter = logging.Formatter(
+                                      '\n%(asctime)s %(levelname)s: \n'
+                                      '%(message)s '
+                                      '[in %(pathname)s:%(lineno)d]'
+                                     )
+        file_handler = FileHandler(Config.LOGS_DIR,
+                                   encoding="utf-8"
+                                   )
+        file_handler.setLevel(logging.DEBUG)
+        file_handler.setFormatter(formatter)
         app.logger.addHandler(file_handler)
-
-        app.logger.setLevel(logging.INFO)
+        #
+        stream_handler = logging.StreamHandler()
+        stream_handler.setLevel(logging.DEBUG)
+        stream_handler.setFormatter(formatter)
+        app.logger.addHandler(stream_handler)
+        #
+        error_handler = RotatingFileHandler(Config.LOGS_WARN_DIR,
+                                            encoding="utf-8",
+                                            maxBytes=10240,
+                                            mode='a+',
+                                            backupCount=100
+                                            )
+        error_handler.setFormatter(formatter)
+        error_handler.setLevel(logging.WARNING)
+        app.logger.addHandler(error_handler)
+        #
+        app.logger.setLevel(logging.DEBUG)
         app.logger.info('APPLICATION HAS BEEN DEPLOYED')
     return app

@@ -41,3 +41,4 @@ class Config(object):
     RECAPTCHA_DATA_ATTRS = {'size': 'compact', 'theme': 'light'}
     #
     LOGS_DIR = os.path.join(basedir, 'logs/log.txt')
+    LOGS_WARN_DIR = os.path.join(basedir, 'logs/warnings/wlog.txt')

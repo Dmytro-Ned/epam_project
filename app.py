@@ -25,4 +25,4 @@ if __name__ == "__main__":
     """
     The Entry Point of the project
     """
-    app.run(debug=True, port=2021)
+    app.run(debug=False, port=2021)
