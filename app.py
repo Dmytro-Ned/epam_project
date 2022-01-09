@@ -8,7 +8,7 @@ from src.posts.models import Post
 from src.quiz.models import Option, Result, Test, Question
 
 
-app = instantiate_app()
+app = instantiate_app()  # pylint: disable=C0103
 
 
 @app.shell_context_processor
@@ -22,7 +22,5 @@ def make_shell_context():
 
 
 if __name__ == "__main__":
-    """
-    The Entry Point of the project
-    """
-    app.run(debug=False, port=2021)
+    app.run(debug=True, port=2022)
+

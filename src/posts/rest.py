@@ -189,4 +189,3 @@ class PostsAPI(PostCommonAPI):
         if not current_user.is_superuser:
             return abort(403, "Forbidden. Bad credentials")
         return "This feature is not implemented"  # FEEDBACK THROUGH REST API is inconvenient
-                                                  # TODO: test links names - digits; ADMIN won't leave feedback

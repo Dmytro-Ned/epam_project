@@ -7,12 +7,12 @@ during client-server interaction through HTML templates.
 from flask import flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_user, login_required, logout_user
 #
-from src import db
 from src.auth import bp
-from src.auth.forms import LoginForm, ProfileForm, RegistrationForm, ResetPasswordForm, RequestResetForm
+from src.auth.forms import LoginForm, ProfileForm, RegistrationForm, \
+                           ResetPasswordForm, RequestResetForm
 from src.auth.models import User
-#
 from src.auth.utils import save_image, send_reset_email
+from src.main.service import session_create, session_update
 
 
 @bp.route("/register", methods=["GET", "POST"])
@@ -27,11 +27,13 @@ def register_page():
         return redirect(url_for('main.home_page'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(first_name=form.first_name.data, last_name=form.last_name.data,
-                    username=form.username.data, email=form.email.data.lower())  # Using UserMixin, PyCharm flashes error
+        user = User(first_name=form.first_name.data,  # Using UserMixin, PyCharm flashes error
+                    last_name=form.last_name.data,
+                    username=form.username.data,
+                    email=form.email.data.lower()
+                    )
         user.encrypt_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
+        session_create(user)
         flash(f"Account for '{form.username.data}' successfully created!", category="primary")
         login_user(user)
         return redirect(url_for("main.home_page"))
@@ -98,7 +100,7 @@ def profile_page():
         current_user.last_name = form.last_name.data
         current_user.username = form.username.data
         current_user.email = form.email.data.lower()
-        db.session.commit()  # TODO: no 'db.session.add' is required when altering a db row
+        session_update()  # no 'db.session.add' is required when altering a table row
         flash("Account updated", category="primary")
         return redirect(url_for('auth.profile_page'))  # do not remove: POST-GET-redirect pattern
     elif request.method == "GET":  # to see current username and email data when the form is loaded
@@ -143,11 +145,11 @@ def reset_password_page(token):
     user = User.verify_reset_token(token)
     if not user:
         flash("That token is invalid or has already expired", category="secondary")
-        return redirect(url_for('auth.reset_request_page'))  # do not remove: POST-GET-redirect pattern
+        return redirect(url_for('auth.reset_request_page'))  # don't remove: redirect pattern
     form = ResetPasswordForm()
     if form.validate_on_submit():
         user.encrypt_password(form.password.data)
-        db.session.commit()  # TODO: no 'db.session.add' is required when altering a db row
+        session_update()  # no 'db.session.add' is required when altering a table row
         flash(f"Your password has been successfully updated", category="primary")
         return redirect(url_for("auth.login_page"))
     return render_template("auth/reset_password.html", form=form)

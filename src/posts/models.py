@@ -20,8 +20,8 @@ class Post(db.Model):
     uuid = db.Column(UUID(as_uuid=True), default=uuid4, index=True, unique=True)  # PgSQL
     title = db.Column(db.String(60), nullable=False)
     content = db.Column(db.Text(), nullable=False)
-    post_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # do not put parenthesis: current time
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # prevents user deletion by Admin
+    post_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # no (): curr.time
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # err: admin user del
     test_id = db.Column(db.Integer, db.ForeignKey('test.id', ondelete="CASCADE"), nullable=False)
 
     def __repr__(self):

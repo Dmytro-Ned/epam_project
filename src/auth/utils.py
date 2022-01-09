@@ -26,9 +26,9 @@ def save_image(image_data):
     random_hex = secrets.token_hex(8)
     _, file_ext = os.path.splitext(image_data.filename)
     filename = random_hex + file_ext
-    image_path = os.path.join(current_app.root_path, 'static/avatars', filename)  # TODO: fix
+    image_path = os.path.join(current_app.root_path, 'static/avatars', filename)
     if not current_user.image.startswith("default.png"):
-        os.remove(os.path.join(current_app.root_path, 'static/avatars', currentser.image))
+        os.remove(os.path.join(current_app.root_path, 'static/avatars', current_user.image))
     output_size = 200, 200
     avatar = Image.open(image_data)
     avatar.thumbnail(output_size)
@@ -59,4 +59,4 @@ def send_reset_email(user):
                   recipients=[user.email])
     msg.html = render_template('auth/reset_letter.html',
                                user=user, token=token)
-    Thread(target=send_async_email, args=(current_app._get_current_object(), msg)).start()
+    Thread(target=send_async_email, args=(current_app._get_current_object(), msg)).start()  # pylint: disable=W0212

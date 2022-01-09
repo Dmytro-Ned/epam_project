@@ -29,10 +29,11 @@ class AdminMixin:  # mixin reduces code duplication
 
         :return bool: an indicator of accessibility
         """
-        return current_user.is_superuser if not isinstance(current_user, AnonymousUserMixin) else False
+        return current_user.is_superuser if \
+            not isinstance(current_user, AnonymousUserMixin) else False
 
 
-class AlteredModelView(AdminMixin, ModelView):  # restricts access to the ORM models on the admin page
+class AlteredModelView(AdminMixin, ModelView):  # restricts access to ORM models on the admin page
     """
     A class which manages access to models
     from admin panel and their interface.
@@ -71,4 +72,3 @@ class AlteredAdminIndexView(AdminMixin, AdminIndexView):  # restricts access to 
     A class which manages main admin panel page
     and its accessibility.
     """
-    pass

@@ -41,7 +41,8 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(60), unique=False, nullable=False)
     is_superuser = db.Column(db.Boolean, unique=False, default=False)
     posts = db.relationship('Post', backref='author', lazy=True)  # prevents user deletion by Admin
-    results = db.relationship('Result', backref='user', cascade="all, delete-orphan", lazy=True, passive_deletes=True)
+    results = db.relationship('Result', backref='user', cascade="all, delete-orphan",
+                              lazy=True, passive_deletes=True)
 
     @property
     def full_name(self):
@@ -94,7 +95,7 @@ class User(db.Model, UserMixin):
         serializer = Serializer(current_app.config['SECRET_KEY'])
         try:
             user_id = serializer.loads(token)['user_id']
-        except Exception:
+        except Exception:  # pylint: disable=W0703
             return None
         return User.query.get(user_id)
 

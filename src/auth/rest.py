@@ -11,7 +11,7 @@ from flask_login import current_user
 #
 from sqlalchemy.exc import DataError
 
-from src.main.service import session_create, session_update, session_delete
+from src.main.service import session_create, session_update
 from src.auth.models import User
 
 

@@ -7,7 +7,7 @@ during client-server interaction through HTML templates.
 from flask import abort, current_app, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 #
-from src import db
+from src.main.service import session_create, session_update, session_delete
 from src.posts import bp
 from src.posts.models import Post
 from src.quiz.models import Test
@@ -28,8 +28,7 @@ def post_create_page():
         test = Test.query.filter_by(title=form.test.data).first()  # tests may share similar name
         post = Post(title=form.title.data, content=form.content.data,
                     test_id=test.id, author=current_user)
-        db.session.add(post)
-        db.session.commit()
+        session_create(post)
         flash('Thank you fot the feedback', category="success")
         return redirect(url_for("main.home_page"))  # do not remove: POST-GET-redirect pattern
     return render_template("posts/post_create_or_update.html",
@@ -70,14 +69,17 @@ def post_update_page(post_uuid):
         post.test_id = test.id
         post.title = form.title.data
         post.content = form.content.data
-        db.session.commit()  # TODO: note that no 'db.session.add' is required when altering a db row
+        session_update()  # no 'db.session.add' is required when altering a table row
         flash("The post has been successfully updated", category="success")
         return redirect(url_for('posts.post_list_view_page', post_id=post.id))
     elif request.method == "GET":
         form.title.data = post.title
         form.content.data = post.content
         form.test.data = post.test.title
-    return render_template("posts/post_create_or_update.html", form=form, operation="Update your", post=post)
+    return render_template("posts/post_create_or_update.html",
+                           form=form,
+                           operation="Update your",
+                           post=post)
 
 
 @bp.route("/posts/delete/<uuid:post_uuid>", methods=["POST"])  # no 'GET' template
@@ -92,7 +94,6 @@ def post_delete(post_uuid):
     post = Post.query.filter_by(uuid=post_uuid).first()
     if post.author != current_user:  # in case of attempt to change the post by another user
         abort(403)
-    db.session.delete(post)
-    db.session.commit()
+    session_delete(post)
     flash("The post has been successfully deleted", category="success")
     return redirect(url_for("posts.post_list_view_page"))

@@ -17,7 +17,8 @@ class Test(db.Model):
     """
     An ORM class which represents SQL table "test".
 
-    Fields: id, uuid, title, description, level, image, related questions, related results, related posts
+    Fields: id, uuid, title, description, level, image,
+            related questions, related results, related posts
 
     class Level: Enum-based levels of the test
 
@@ -38,14 +39,17 @@ class Test(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     uuid = db.Column(UUID(as_uuid=True), default=uuid4, index=True, unique=True)  # PgSQL
-    # uuid = db.Column(db.String(length=32), default=generate_uuid, index=True, unique=True) # for SQLite
+    # uuid = db.Column(db.String(length=32), default=generate_uuid, index=True, unique=True) # SQLt
     title = db.Column(db.String(64), nullable=False, unique=False)
     description = db.Column(db.Text())
     level = db.Column(db.Enum(Level), default=Level.BASIC, nullable=False)
-    image = db.Column(db.String(20), default='default_test.png',  nullable=False, unique=False)
-    questions = db.relationship('Question', backref='test', cascade="all, delete-orphan", lazy=True, passive_deletes=True)
-    results = db.relationship('Result', backref='test', cascade="all, delete-orphan", lazy=True, passive_deletes=True)
-    posts = db.relationship('Post', backref='test', cascade="all, delete-orphan", lazy=True, passive_deletes=True)
+    image = db.Column(db.String(20), default='default_test.png', nullable=False, unique=False)
+    questions = db.relationship('Question', backref='test', cascade="all, delete-orphan",
+                                lazy=True, passive_deletes=True)
+    results = db.relationship('Result', backref='test', cascade="all, delete-orphan",
+                              lazy=True, passive_deletes=True)
+    posts = db.relationship('Post', backref='test', cascade="all, delete-orphan",
+                            lazy=True, passive_deletes=True)
 
     def get_num_questions(self):
         """
@@ -62,8 +66,10 @@ class Test(db.Model):
 
         :return int: the maximal number of correct answers
         """
-        user_specific_results = filter(lambda result: result.user_id == current_user.id, self.results)
-        correct_answers = sorted(map(lambda result: result.num_correct_answers, user_specific_results))
+        user_specific_results = filter(lambda result: result.user_id == current_user.id,
+                                       self.results)
+        correct_answers = sorted(map(lambda result: result.num_correct_answers,
+                                     user_specific_results))
         return max(correct_answers) if correct_answers else 0
 
     def get_last_result(self):
@@ -73,8 +79,10 @@ class Test(db.Model):
 
         :return Result/bool: the last result of the current user/False flag
         """
-        user_specific_results = filter(lambda result: result.user_id == current_user.id, self.results)
-        unfinished_results = list(filter(lambda result: result.state == Result.State.NEW, user_specific_results))
+        user_specific_results = filter(lambda result: result.user_id == current_user.id,
+                                       self.results)
+        unfinished_results = list(filter(lambda result: result.state == Result.State.NEW,
+                                         user_specific_results))
         if unfinished_results:
             return unfinished_results[-1]
         return False
@@ -119,7 +127,8 @@ class Option(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.Text())
     is_correct = db.Column(db.Boolean, default=False, nullable=False)
-    question_id = db.Column(db.Integer, db.ForeignKey('question.id', ondelete="CASCADE"), nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey('question.id', ondelete="CASCADE"),
+                            nullable=False)
 
     def __repr__(self):
         """
@@ -128,7 +137,8 @@ class Option(db.Model):
         :return str: the id of the option, of its related question
                      and the order number of the related question
         """
-        return f'Option(id:{self.id} to question id:{self.question_id} №{self.question.order_number})'
+        return f'Option(id:{self.id} to question id:' \
+               f'{self.question_id} №{self.question.order_number})'
 
 
 class Result(db.Model):
@@ -164,10 +174,10 @@ class Result(db.Model):
         """
         if model_option.is_correct:
             self.num_correct_answers += 1
-            flash("Correct answer", category="info")  # TODO: substitute?
+            flash("Correct answer", category="info")
         else:
             self.num_incorrect_answers += 1
-            flash("Wrong answer", category="danger")  # TODO: substitute?
+            flash("Wrong answer", category="danger")
         self.last_question += 1
         if self.last_question == self.test.get_num_questions():
             self.state = self.State.FINISHED

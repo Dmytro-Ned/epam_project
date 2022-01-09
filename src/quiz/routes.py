@@ -7,7 +7,7 @@ during client-server interaction through HTML templates.
 from flask import current_app, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 #
-from src import db
+from src.main.service import session_create
 from src.quiz import bp
 from src.quiz.models import Result, Test, Question
 from src.quiz.forms import OptionMultiForm
@@ -53,8 +53,7 @@ def result_create_view(test_uuid):
         user_id=current_user.id,
         test_id=Test.query.filter_by(uuid=test_uuid).first().id,
     )
-    db.session.add(result)
-    db.session.commit()
+    session_create(result)
     return redirect(url_for("quiz.result_update_question_view_page",
                             test_uuid=test_uuid,
                             result_uuid=result.uuid

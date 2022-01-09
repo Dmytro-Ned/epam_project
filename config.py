@@ -7,23 +7,24 @@ import os
 from dotenv import load_dotenv
 
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+basedir = os.path.abspath(os.path.dirname(__file__))  # pylint: disable=C0103
 load_dotenv(os.path.join(basedir, '.env'))
 
 
-class Config(object):
+class Config:
     """
     A class with project configurations
     loaded from Environment Variables.
     """
-    FLASK_APP = os.environ.get('FLASK_APP') or 'app.py'
+    FLASK_APP = os.environ.get('FLASK_APP')
     SECRET_KEY = os.environ.get('SECRET_KEY')
     #
     FLASK_ADMIN_SWATCH = os.environ.get('FLASK_ADMIN_SWATCH') or 'cerulean'
     #
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'quiz.db')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False  # Don't send a signal to the app every time a change is a made in the DB.
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+    # 'sqlite:///' + os.path.join(basedir, 'quiz.db')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False  # Don't send a signal with every change in the DB.
     #
     BUNDLE_ERRORS = True  # RESTFullAPI ReqParse: displays all errors
     #
@@ -39,6 +40,6 @@ class Config(object):
     RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
     RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
     RECAPTCHA_DATA_ATTRS = {'size': 'compact', 'theme': 'light'}
-    #
+    # #
     LOGS_DIR = os.path.join(basedir, 'logs/log.txt')
     LOGS_WARN_DIR = os.path.join(basedir, 'logs/warnings/wlog.txt')
