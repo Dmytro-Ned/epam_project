@@ -39,7 +39,7 @@ class UserApiCase(unittest.TestCase):
 
     def test_get_users(self):
         api_get = self.client.get('/auth/api/users/')
-        self.assertEqual(api_get.status_code, 200)
+        self.assertEqual(api_get.status_code, 401)
 
     def test_post_users(self):
         api_post = self.client.post('/auth/api/users/',

@@ -10,6 +10,7 @@ from config import Config
 
 class TestConfig(Config):
     TESTING = True
+    CSRF_ENABLED = False
     SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL")
 
 
@@ -17,6 +18,7 @@ class UserModelCase(unittest.TestCase):
 
     def setUp(self):
         self.app = instantiate_test_app(TestConfig)
+        self.app.config["CSRF_ENABLED"] = False
         self.app_context = self.app.app_context()
         self.app_context.push()
         db.create_all()

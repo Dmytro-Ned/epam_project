@@ -79,7 +79,7 @@ class UserModelCase(unittest.TestCase):
         with self.app.test_request_context():
             login_user(User.query.get(1))
         response = self.client.get("/posts/create")
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         response = self.client.post('auth/login',
                                     data=dict(
                                              title="Test Topic",

@@ -1,8 +1,6 @@
 import os
 import unittest
-#
-from flask import current_app
-from flask_login import login_user
+
 #
 from src import instantiate_test_app, db
 from src.auth.models import User
@@ -64,10 +62,8 @@ class UserApiCase(unittest.TestCase):
                                           }
                                     )
         self.assertEqual(api_post.status_code, 401)
-        with self.client:
-            login_user(self.test_admin)
-            api_post = self.client.get('/auth/api/users/')
-        self.assertEqual(api_post.status_code, 200)
+        api_post = self.client.get('/auth/api/users/')
+        self.assertEqual(api_post.status_code, 401)
 
     def test_get_post(self):
         api_post = self.client.get(f'/api/posts/{self.test_post.uuid}')
