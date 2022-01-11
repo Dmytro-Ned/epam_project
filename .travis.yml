@@ -1,6 +1,10 @@
 language: python
 python:
   - "3.8"
+services:
+  - postgresql
+before_script:
+ - psql -c 'CREATE DATABASE IF NOT EXISTS testflaskapp;' -U server
 before_install:
   - python -m pip install --upgrade pip
 install:
