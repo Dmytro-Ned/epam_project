@@ -3,6 +3,8 @@ python:
   - "3.8"
 services:
   - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
 before_install:
   - python -m pip install --upgrade pip
 install:
