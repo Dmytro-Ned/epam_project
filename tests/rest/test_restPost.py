@@ -13,7 +13,7 @@ class TestConfig(Config):
     TESTING = True
     LOGIN_DISABLED = False
     SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL") or \
-                              "postgresql://postgres:postgres@localhost:5433/testflaskapp"
+                              "postgresql://postgres:postgres@localhost/testflaskapp"
 
 
 class UserApiCase(unittest.TestCase):
