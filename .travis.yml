@@ -6,9 +6,9 @@ services:
 env:
   global:
     - PGPORT=5433
-    - DB_NAME=testdbname
-    - DB_USER=dbowner
-    - DB_PASSWORD=dbpassword
+    - DB_NAME=testflaskapp
+    - DB_USER=server
+    - DB_PASSWORD=servere
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - psql --command="CREATE USER server;"
