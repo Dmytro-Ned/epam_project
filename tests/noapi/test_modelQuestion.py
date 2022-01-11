@@ -8,7 +8,8 @@ from config import Config
 
 class TestConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL") or \
+                              "postgresql://postgres:postgres@localhost:5433/testflaskapp"
 
 
 class TestModelCase(unittest.TestCase):
