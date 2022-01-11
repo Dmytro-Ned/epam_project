@@ -5,8 +5,8 @@ services:
   - postgresql
 before_script:
  - cp config/database.yml.travis config/database.yml
- - psql -c 'CREATE DATABASE testflaskapp;' -U server
-before_install:`
+ - psql -c "CREATE DATABASE testflaskapp;" -U server
+before_install:
   - python -m pip install --upgrade pip
 install:
   - pip install -r requirements.txt
