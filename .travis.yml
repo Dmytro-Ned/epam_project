@@ -5,14 +5,11 @@ services:
   - postgresql
 env:
   global:
-    - PGPORT=5433
     - DB_NAME=testflaskapp
-    - DB_USER=server
-    - DB_PASSWORD=servere
+    - DB_USER=postgres
+    - DB_PASSWORD=postgres
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
-  - psql --command="CREATE USER server;"
-  - psql --command="CREATE DATABASE testflaskapp WITH OWNER = server;"
   - psql --dbname=testflaskapp
 before_install:
   - python -m pip install --upgrade pip
