@@ -27,42 +27,42 @@ EPAM Python Autumn 2021 Final Project. The project is a prototype Python quiz we
 ---
 
 Start your interaction with the application with registration.
-![](../../../Pictures/1_reg_empt.png)
+![](illustrations/1_reg_empt.png)
 
 Fill in the form fields and check the ReCaptcha box.
-![](../../../Pictures/2_reg_fill.png)
+![](illustrations/2_reg_fill.png)
 
 You can edit your personal profile data any time.
-![](../../../Pictures/3_profile.png)
+![](illustrations/3_profile.png)
 
 You are free to Log Out and Log In later.
-![](../../../Pictures/4_login.png)
+![](illustrations/4_login.png)
 
 In case you have forgotten your password you may restore it by following the restoration instructions.
-![](../../../Pictures/5_restore.png)
+![](illustrations/5_restore.png)
 
 From the list of existing tests select a test to take and click the details button.
-![](../../../Pictures/6_tests_list.png)
+![](illustrations/6_tests_list.png)
 
 On the page with details about the test you will see extra information and may start taking the test.
-![](../../../Pictures/7_test_details.png)
+![](illustrations/7_test_details.png)
 
 Read the question and pick an option you consider correct.
-![](../../../Pictures/8_test_process.png)
+![](illustrations/8_test_process.png)
 
 Having finished the test, you may see your results. 
-![](../../../Pictures/9_test_results.png)
+![](illustrations/9_test_results.png)
 
 If you have any propositions concerning the quiz, feel free 
 to leave your feedback.
 
-![](../../../Pictures/10_feedback_empt.png)
+![](illustrations/10_feedback_empt.png)
 
-![](../../../Pictures/11_feedback_fill.png)
+![](illustrations/11_feedback_fill.png)
 
 Your messages would be available on the FEEDBACK page, editable and removable.
 
-![](../../../Pictures/12_feedback_list.png)
+![](illustrations/12_feedback_list.png)
 
 
 ---
