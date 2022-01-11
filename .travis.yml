@@ -3,8 +3,17 @@ python:
   - "3.8"
 services:
   - postgresql
+env:
+  global:
+    - PGPORT=5433
+    - DB_NAME=testdbname
+    - DB_USER=dbowner
+    - DB_PASSWORD=dbpassword
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
+  - psql --command="CREATE USER server;"
+  - psql --command="CREATE DATABASE testflaskapp WITH OWNER = server;"
+  - psql --dbname=testflaskapp
 before_install:
   - python -m pip install --upgrade pip
 install:
