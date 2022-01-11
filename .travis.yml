@@ -8,6 +8,7 @@ env:
     - DB_NAME=testflaskapp
     - DB_USER=postgres
     - DB_PASSWORD=postgres
+    - SECRET_KEY=45t82hfmieuvf5984nyuru84ty34htejhiuyj4382fu
 before_script:
   - psql -c 'create database testflaskapp;' -U postgres
 before_install:
