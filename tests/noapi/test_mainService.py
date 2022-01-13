@@ -48,5 +48,5 @@ class TestModelCase(unittest.TestCase):
         self.assertEqual(get_404.status_code, 404)
 
 
-if __name__ == "__main__":
-    unittest.main(verbosity=2)
+# if __name__ == "__main__":
+#     unittest.main(verbosity=2)
