@@ -55,3 +55,7 @@ class TestModelCase(unittest.TestCase):
         db.session.commit()
         no_result = Result.query.first()
         self.assertIsNone(no_result)
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
