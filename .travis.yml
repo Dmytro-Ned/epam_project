@@ -1,0 +1,23 @@
+language: python
+python:
+  - "3.8"
+services:
+  - postgresql
+env:
+  global:
+    - DB_NAME=testflaskapp
+    - DB_USER=postgres
+    - DB_PASSWORD=postgres
+    - SECRET_KEY=45t82hfmieuvf5984nyuru84ty34htejhiuyj4382fu
+before_script:
+  - psql -c 'create database testflaskapp;' -U postgres
+before_install:
+  - python -m pip install --upgrade pip
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+script:
+  - coverage run -m unittest discover tests/rest/
+  - coverage run -m unittest discover tests/noapi/
+after_success:
+  - coveralls
