@@ -13,7 +13,12 @@ from config import Config
 
 class TestConfig(Config):
     TESTING = True
+<<<<<<< HEAD
     SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL")
+=======
+    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL") or \
+                              "postgresql://postgres:postgres@localhost/testflaskapp"
+>>>>>>> main
 
 
 class UserModelCase(unittest.TestCase):
@@ -79,7 +84,11 @@ class UserModelCase(unittest.TestCase):
         with self.app.test_request_context():
             login_user(User.query.get(1))
         response = self.client.get("/posts/create")
+<<<<<<< HEAD
         self.assertEqual(response.status_code, 200)
+=======
+        self.assertEqual(response.status_code, 302)
+>>>>>>> main
         response = self.client.post('auth/login',
                                     data=dict(
                                              title="Test Topic",

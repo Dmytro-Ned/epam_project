@@ -27,6 +27,7 @@ EPAM Python Autumn 2021 Final Project. The project is a prototype Python quiz we
 ---
 
 Start your interaction with the application with registration.
+<<<<<<< HEAD
 ![](../../../Pictures/1_reg_empt.png)
 
 Fill in the form fields and check the ReCaptcha box.
@@ -52,10 +53,38 @@ Read the question and pick an option you consider correct.
 
 Having finished the test, you may see your results. 
 ![](../../../Pictures/9_test_results.png)
+=======
+![](illustrations/1_reg_empt.png)
+
+Fill in the form fields and check the ReCaptcha box.
+![](illustrations/2_reg_fill.png)
+
+You can edit your personal profile data any time.
+![](illustrations/3_profile.png)
+
+You are free to Log Out and Log In later.
+![](illustrations/4_login.png)
+
+In case you have forgotten your password you may restore it by following the restoration instructions.
+![](illustrations/5_restore.png)
+
+From the list of existing tests select a test to take and click the details button.
+![](illustrations/6_tests_list.png)
+
+On the page with details about the test you will see extra information and may start taking the test.
+![](illustrations/7_test_details.png)
+
+Read the question and pick an option you consider correct.
+![](illustrations/8_test_process.png)
+
+Having finished the test, you may see your results. 
+![](illustrations/9_test_results.png)
+>>>>>>> main
 
 If you have any propositions concerning the quiz, feel free 
 to leave your feedback.
 
+<<<<<<< HEAD
 ![](../../../Pictures/10_feedback_empt.png)
 
 ![](../../../Pictures/11_feedback_fill.png)
@@ -63,6 +92,15 @@ to leave your feedback.
 Your messages would be available on the FEEDBACK page, editable and removable.
 
 ![](../../../Pictures/12_feedback_list.png)
+=======
+![](illustrations/10_feedback_empt.png)
+
+![](illustrations/11_feedback_fill.png)
+
+Your messages would be available on the FEEDBACK page, editable and removable.
+
+![](illustrations/12_feedback_list.png)
+>>>>>>> main
 
 
 ---

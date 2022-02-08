@@ -139,10 +139,21 @@ def instantiate_test_app(config_class=Config):  # application factory
     admin.init_app(app, index_view=AlteredAdminIndexView())
     admin.add_view(AlteredModelView(User, db.session, endpoint=f"{uuid.uuid4().hex}",))
     admin.add_view(AlteredModelView(Post, db.session, endpoint=f"{uuid.uuid4().hex}",))
+<<<<<<< HEAD
     admin.add_view(AlteredModelView(Option, db.session, endpoint=f"{uuid.uuid4().hex}", category="Quiz"))
     admin.add_view(AlteredModelView(Result, db.session, endpoint=f"{uuid.uuid4().hex}", category="Quiz"))
     admin.add_view(AlteredModelView(Test, db.session, endpoint=f"{uuid.uuid4().hex}", category="Quiz"))
     admin.add_view(AlteredModelView(Question, db.session, endpoint=f"{uuid.uuid4().hex}", category="Quiz"))
+=======
+    admin.add_view(AlteredModelView(Option, db.session, endpoint=f"{uuid.uuid4().hex}",
+                                    category="Quiz"))
+    admin.add_view(AlteredModelView(Result, db.session, endpoint=f"{uuid.uuid4().hex}",
+                                    category="Quiz"))
+    admin.add_view(AlteredModelView(Test, db.session, endpoint=f"{uuid.uuid4().hex}",
+                                    category="Quiz"))
+    admin.add_view(AlteredModelView(Question, db.session, endpoint=f"{uuid.uuid4().hex}",
+                                    category="Quiz"))
+>>>>>>> main
     #
     bcrypt.init_app(app)
     login_manager.init_app(app)

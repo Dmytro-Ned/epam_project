@@ -231,6 +231,7 @@ APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__
 2022-01-01 16:08:38,654 INFO: 
 APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:115]
 
+<<<<<<< HEAD
 2022-01-01 16:10:11,661 INFO: 
 APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:115]
 
@@ -1948,4 +1949,148 @@ APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__
 APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
 
 2022-01-09 19:39:03,960 INFO: 
+=======
+2022-01-09 23:12:12,413 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-09 23:12:12,520 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-09 23:12:12,613 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-09 23:12:12,740 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 16:26:02,614 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 16:26:02,614 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 16:26:02,614 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 16:26:02,615 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 16:26:03,368 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 16:26:03,441 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 16:26:03,502 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 16:26:03,555 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 23:31:32,494 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 23:31:32,507 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 23:31:32,507 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 23:31:32,512 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 23:31:32,515 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 23:31:32,531 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 23:31:32,531 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-11 23:31:32,537 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 14:35:59,770 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 14:35:59,771 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 14:35:59,787 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 14:35:59,790 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 14:36:00,843 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 14:36:00,945 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 14:36:00,969 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 14:36:01,024 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 20:14:35,380 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 20:14:35,382 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 20:14:35,383 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 20:14:35,391 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 22:59:32,213 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 22:59:32,218 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 22:59:32,229 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 22:59:32,241 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 22:59:33,058 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 22:59:33,229 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 22:59:33,287 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-01-13 22:59:33,365 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-02-08 12:04:15,116 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-02-08 12:04:15,116 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-02-08 12:04:15,199 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-02-08 12:04:15,306 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-02-08 12:04:15,704 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-02-08 12:04:15,705 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-02-08 12:04:15,705 INFO: 
+APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]
+
+2022-02-08 12:04:15,756 INFO: 
+>>>>>>> main
 APPLICATION HAS BEEN DEPLOYED [in /home/jagdpanther/EPAM/snaketests/src/__init__.py:116]

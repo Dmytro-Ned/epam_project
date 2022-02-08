@@ -10,13 +10,23 @@ from config import Config
 
 class TestConfig(Config):
     TESTING = True
+<<<<<<< HEAD
     SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL")
+=======
+    CSRF_ENABLED = False
+    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL") or \
+                              "postgresql://postgres:postgres@localhost/testflaskapp"
+>>>>>>> main
 
 
 class UserModelCase(unittest.TestCase):
 
     def setUp(self):
         self.app = instantiate_test_app(TestConfig)
+<<<<<<< HEAD
+=======
+        self.app.config["CSRF_ENABLED"] = False
+>>>>>>> main
         self.app_context = self.app.app_context()
         self.app_context.push()
         db.create_all()

@@ -9,7 +9,12 @@ from config import Config
 class TestConfig(Config):
     TESTING = True
     LOGIN_DISABLED = False
+<<<<<<< HEAD
     SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL")
+=======
+    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL") or \
+                              "postgresql://postgres:postgres@localhost/testflaskapp"
+>>>>>>> main
 
 
 class UserApiCase(unittest.TestCase):
@@ -39,7 +44,11 @@ class UserApiCase(unittest.TestCase):
 
     def test_get_users(self):
         api_get = self.client.get('/auth/api/users/')
+<<<<<<< HEAD
         self.assertEqual(api_get.status_code, 200)
+=======
+        self.assertEqual(api_get.status_code, 401)
+>>>>>>> main
 
     def test_post_users(self):
         api_post = self.client.post('/auth/api/users/',

@@ -1,8 +1,12 @@
 import os
 import unittest
+<<<<<<< HEAD
 #
 from flask import current_app
 from flask_login import login_user
+=======
+
+>>>>>>> main
 #
 from src import instantiate_test_app, db
 from src.auth.models import User
@@ -14,7 +18,12 @@ from config import Config
 class TestConfig(Config):
     TESTING = True
     LOGIN_DISABLED = False
+<<<<<<< HEAD
     SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL")
+=======
+    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL") or \
+                              "postgresql://postgres:postgres@localhost/testflaskapp"
+>>>>>>> main
 
 
 class UserApiCase(unittest.TestCase):
@@ -64,10 +73,15 @@ class UserApiCase(unittest.TestCase):
                                           }
                                     )
         self.assertEqual(api_post.status_code, 401)
+<<<<<<< HEAD
         with self.client:
             login_user(self.test_admin)
             api_post = self.client.get('/auth/api/users/')
         self.assertEqual(api_post.status_code, 200)
+=======
+        api_post = self.client.get('/auth/api/users/')
+        self.assertEqual(api_post.status_code, 401)
+>>>>>>> main
 
     def test_get_post(self):
         api_post = self.client.get(f'/api/posts/{self.test_post.uuid}')
