@@ -1,0 +1,19 @@
+{% extends 'admin/master.html' %}
+
+
+{% block brand %}
+    <a class="navbar-brand" href="#">
+        <img src="{{ url_for('static', filename='img/favicon.ico') }}"
+             alt="profile_image"
+             style="width:60px;height:60px;"
+             class="img-thumbnail rounded-circle
+             border border-2 border-secondary align-top">
+    </a>
+{% endblock %}
+
+{% block body %}
+    <a class="btn btn-primary text-light border mx-1 mt-2"
+     href="{{ url_for('main.home_page') }}">
+      View&nbsp;Site
+    </a>
+{% endblock %}

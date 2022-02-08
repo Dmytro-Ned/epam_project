@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+    LOG IN
+{% endblock %}
+
+
+{% block content %}
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom border-2 w-25 border-dark mb-4">Log In</legend>
+            <div class="form-group py-sm-1 mb-0">
+                {% if form.username_or_email.errors %}
+                    {{ form.username_or_email(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username_or_email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username_or_email(class="form-control form-control-lg", placeholder=form.username_or_email.label.text) }}
+                {% endif %}
+            </div>
+
+            <div class="form-group py-sm-1 mb-0">
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control form-control-lg", placeholder=form.password.label.text) }}
+                {% endif %}
+                <br>
+                <small class="text-muted m-1">
+                   Forgot your Password? <a href="{{ url_for('auth.reset_request_page') }}">Click</a> to restore.
+                </small>
+            </div>
+
+            <div class="form-check mt-2">
+                {{ form.remember(class="form-check-input") }}
+                {{ form.remember.label(class="form-check-label") }}
+            </div>
+        </fieldset>
+        <br>
+        <div class="form-group mb-2">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+
+    <small class="text-muted">
+        Don't have an account yet? <a class="text-dark ml-2" href="{{ url_for('auth.register_page') }}">Register </a>
+    </small>
+
+{% endblock content %}
